@@ -1,0 +1,82 @@
+/* Yellow Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme='light'],
+:root:not([data-theme='dark']) {
+  --primary: #fdd835;
+  --primary-hover: #fbc02d;
+  --primary-focus: rgba(253, 216, 53, 0.125);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+}
+
+/* Yellow Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #fdd835;
+    --primary-hover: #ffeb3b;
+    --primary-focus: rgba(253, 216, 53, 0.25);
+    --primary-inverse: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* Yellow Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme='dark'] {
+  --primary: #fdd835;
+  --primary-hover: #ffeb3b;
+  --primary-focus: rgba(253, 216, 53, 0.25);
+  --primary-inverse: rgba(0, 0, 0, 0.75);
+}
+
+/* Yellow (Common styles) */
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+}
+
+#qr-code {
+  max-width: 280px;
+  height: 280px;
+  margin: 0 auto 1rem auto;
+  padding: 1rem;
+  text-align: center;
+  border: solid 1px var(--primary);
+  border-radius: 14px;
+}
+
+.download-button {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.theme-switcher {
+  position: fixed;
+  right: calc(var(--spacing) / 2 + var(--scrollbar-width, 0px));
+  bottom: var(--spacing);
+  width: auto;
+  margin-bottom: 0;
+  padding: 0.75rem;
+  border-radius: 2rem;
+  box-shadow: var(--card-box-shadow);
+  line-height: 1;
+  text-align: right;
+}
+
+.theme-switcher::after {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 0.15rem solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right,
+    currentColor 0,
+    currentColor 50%,
+    transparent 50%
+  );
+  content: '';
+  vertical-align: bottom;
+  transition: transform var(--transition);
+}
