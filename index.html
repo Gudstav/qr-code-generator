@@ -22,15 +22,20 @@
               type="text"
               id="text"
               name="text"
-              placeholder="Link for QR code"
+              placeholder="URL for QR code"
               required
             />
           </label>
         </div>
         <button type="submit">Generate!</button>
       </form>
-      <div id="qr-code"></div>
-      <button type="submit" id="download-button" class="download-button">
+      <article id="qr-code"></article>
+      <button
+        type="submit"
+        disabled
+        id="download-button"
+        class="download-button"
+      >
         Download .svg
       </button>
       <button

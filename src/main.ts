@@ -2,16 +2,18 @@ import './style.css';
 import { generateQR } from './qr-code.ts';
 
 const form = document.querySelector<HTMLFormElement>('#form')!;
+
+const downloadButton =
+  document.querySelector<HTMLButtonElement>('#download-button')!;
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
   const input = document.querySelector<HTMLInputElement>('#input')!;
   const value = input.value;
   const QRCode = await generateQR(value);
-  document.querySelector<HTMLDivElement>('#qr-code')!.innerHTML = QRCode;
+  document.querySelector<HTMLElement>('#qr-code')!.innerHTML = QRCode;
+  downloadButton.disabled = false;
 });
-
-const downloadButton =
-  document.querySelector<HTMLFormElement>('#download-button')!;
 
 const triggerDownload = (imgURI: string) => {
   let a = document.createElement('a');
@@ -23,8 +25,8 @@ const triggerDownload = (imgURI: string) => {
   a.click();
 };
 
-const save = () => {
-  const svg = document.querySelector<HTMLFormElement>('svg')!;
+const download = () => {
+  const svg = document.querySelector<HTMLElement>('svg')!;
   let data = new XMLSerializer().serializeToString(svg);
   let svgBlob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
   let url = URL.createObjectURL(svgBlob);
@@ -32,10 +34,10 @@ const save = () => {
   triggerDownload(url);
 };
 
-downloadButton.addEventListener('click', save);
+downloadButton.addEventListener('click', download);
 
 const themeSwitcher =
-  document.querySelector<HTMLInputElement>('#theme-switcher')!;
+  document.querySelector<HTMLButtonElement>('#theme-switcher')!;
 
 themeSwitcher.addEventListener('click', () => {
   if (document.documentElement.getAttribute('data-theme') === 'light') {
