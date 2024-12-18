@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
-    />
+    <link rel="stylesheet" href="/src/pico.min.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -16,6 +13,10 @@
       content="LJDF5RAnNIsCM_lalLufaF8667S9Z-8MGIeW4R71Pb8"
     />
     <title>QR Code Generator</title>
+    <meta
+      name="description"
+      content="Create custom QR codes instantly for free. Generate high-quality QR codes for websites, links, and URLs. Download as SVG. No ads, no registration required."
+    />
   </head>
   <body>
     <script type="module" src="/src/main.ts"></script>
@@ -47,9 +48,10 @@
         Download .svg
       </button>
       <button
-        type="submit"
+        type="button"
         id="theme-switcher"
         class="theme-switcher contrast switcher"
+        aria-label="Switch theme"
       ></button>
     </main>
   </body>
